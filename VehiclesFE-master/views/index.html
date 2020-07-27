@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CAR WORKSHOP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-light bg-dark ">
+        <div class="container border-bottom p-3">
+            <a class="navbar-brand text-white " >
+                CAR WORKSHOP
+               <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                   <path fill-rule="evenodd" d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z"/>
+               </svg>
+           </a>
+           <button class="btn btn-info" data-toggle="modal" data-target="#addCar" onclick="formClear();" ><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+               <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+               <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+           </svg>   
+           Crear coche</button>
+        </div>
+        
+    </nav>
+    <div class="container text-white mt-3 text-center ">
+        <div class="row ">
+            <div id="listCar" class="col-md-6 p-5"></div>
+        </div>
+        <div id="res"  class="row"></div>
+    </div>
+
+    <!-- MODAL CREAR COCHE -->
+    <div class="modal fade" id="addCar" tabindex="-1" role="dialog" aria-labelledby="crearCoche" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" >AÑADIR COCHE</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form id="car-form" class="card-body" >
+                    <div class="form-row ">
+                        <div class="col-md-12">
+                        <label >Placa</label>
+                        <input type="text" class="form-control form-control-lg mayusculas" id="plate" onblur="validatePla(), validateBtn();" placeholder="">
+                        <div class="invalid-feedback">
+                            La placa debe contener 4 numeros y 3 consonantes
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                        <label >Marca</label>
+                        <input type="text" class="form-control form-control-lg mayusculas" id="brand" onblur=" validateTex(this.id), validateBtn();" placeholder="">
+                        </div>
+                        <div class="col-md-6">
+                        <label >Color</label>
+
+                        <input type="text" class="form-control form-control-lg mayusculas" id="color"  onblur=" validateTex(this.id), validateBtn();"" placeholder="">
+                        </div>
+                    </div>
+                </form> 
+            </div>
+            <div class="modal-footer">
+                <button  class="btn btn-info" data-toggle="modal" id="btnAddW" data-dismiss="modal" data-target="#llantas" onclick="createCar();" disabled="true">Agregar ruedas</button>   
+            </div>
+          </div>
+        </div>
+    </div>
+    
+    <!-- MODAL CREAR RUEDAS -->
+       
+    <div class="modal fade" id="llantas" tabindex="-1" role="dialog" aria-labelledby="crearRuedas" aria-hidden="true"data-backdrop="static" data-keyboard="false"data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">AÑADIR RUEDAS</h5>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="wheels-form"  >
+                    <div class="text-info">RUEDA 1</div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control form-control-lg mayusculas" id="brandW1" onblur=" validateTex(this.id),validateBtnCar();"
+                                placeholder="Marca">
+                            <div id="prueba"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="number" step="0.01" class="form-control form-control-lg" id="diameterW1" onblur="validateDiam(this.id),validateBtnCar();"
+                            placeholder="Diametro">
+                            <div class="invalid-feedback">
+                                El diametro debe ser mayor de 0.4 y menor que 2
+                            </div>     
+                        </div>
+                        
+                    </div>
+                    <div class="text-info">RUEDA 2</div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control form-control-lg mayusculas" id="brandW2" onblur=" validateTex(this.id),validateBtnCar();"
+                                placeholder="Marca">
+                            <div id="prueba"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="number"  step="0.01" class="form-control form-control-lg" id="diameterW2" onblur="validateDiam(this.id),validateBtnCar();"
+                                placeholder="Diametro">
+                                <div class="invalid-feedback">
+                                    El diametro debe ser mayor de 0.4 y menor que 2
+                                </div>
+                        </div>
+                    </div>
+                    <div class="text-info">RUEDA 3</div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control form-control-lg mayusculas" id="brandW3" onblur=" validateTex(this.id),validateBtnCar();"
+                                placeholder="Marca">
+                            <div id="prueba"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="number" step="0.01" class="form-control form-control-lg" id="diameterW3" onblur="validateDiam(this.id),validateBtnCar();"
+                                placeholder="Diametro">
+                                <div class="invalid-feedback">
+                                    El diametro debe ser mayor de 0.4 y menor que 2
+                                </div>
+                        </div>
+                    </div>
+                    <div class="text-info">RUEDA 4</div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control form-control-lg mayusculas" id="brandW4" onblur=" validateTex(this.id),validateBtnCar();"
+                                placeholder="Marca">
+                            <div id="prueba"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="number" step="0.01" class="form-control form-control-lg" id="diameterW4" onblur="validateDiam(this.id),validateBtnCar();"
+                                placeholder="Diametro">
+                                <div class="invalid-feedback">
+                                    El diametro debe ser mayor de 0.4 y menor que 2
+                                </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button"  id ="btnAddCar" class="btn btn-info " data-dismiss="modal" onclick="carWeels();" disabled="true" >GUARDAR COCHE</button> 
+            </div>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    
+</body>
+<script src="../models/car.js"></script>
+<script src="../models/wheel.js"></script>
+<script src="../controllers/controller.js"></script>
+ <!-- BOOTSTRAP JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+</html>
+
