@@ -18,15 +18,25 @@ body{
 }
 .carAtribt{
     font-weight: bolder;
-    font-size: 2.2em;
+    font-size: 1em;
 }
 
 .carAtrib{
-    font-size: 2.5em;
+    font-size: 2.3em;
     text-transform:uppercase;
     letter-spacing: 4px;
 }
 
-.weel{
-  font-size: 1.5em;
+.wheel{
+  font-size: 1.2em;
+  font-weight: bolder;
 }
+.wheelT{
+    background-color: #fff;
+    color: #343a40;
+    padding: 1px;
+    margin-top: 2px;
+    
+   
+}
+

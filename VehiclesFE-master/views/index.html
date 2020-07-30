@@ -26,10 +26,14 @@
         
     </nav>
     <div class="container text-white mt-3 text-center ">
-        <div class="row ">
-            <div id="listCar" class="col-md-6 p-5"></div>
+        <div class="row" >
+            <div id="listCar" class="col-md-5 p-5 mt-3">
+                
+            </div>
+            <div  class="col-md-7 pt-5">
+              <div class="row" id="res"></div>
+            </div>
         </div>
-        <div id="res"  class="row"></div>
     </div>
 
     <!-- MODAL CREAR COCHE -->
@@ -65,7 +69,7 @@
                 </form> 
             </div>
             <div class="modal-footer">
-                <button  class="btn btn-info" data-toggle="modal" id="btnAddW" data-dismiss="modal" data-target="#llantas" onclick="createCar();" disabled="true">Agregar ruedas</button>   
+                <button  class="btn btn-info" data-toggle="modal" id="btnAddW" data-dismiss="modal" data-target="#llantas" onclick="createCar();" disabled = "true">Agregar ruedas</button>   
             </div>
           </div>
         </div>
@@ -85,7 +89,7 @@
                     <div class="text-info">RUEDA 1</div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <input type="text" class="form-control form-control-lg mayusculas" id="brandW1" onblur=" validateTex(this.id),validateBtnCar();"
+                            <input type="text" class="form-control form-control-lg mayusculas brand" id="brandW1" onblur=" validateTextWheels(this.id),validateBtnCar();"
                                 placeholder="Marca">
                             <div id="prueba"></div>
                         </div>
@@ -101,7 +105,7 @@
                     <div class="text-info">RUEDA 2</div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <input type="text" class="form-control form-control-lg mayusculas" id="brandW2" onblur=" validateTex(this.id),validateBtnCar();"
+                            <input type="text" class="form-control form-control-lg mayusculas brand" id="brandW2" onblur=" validateTextWheels(this.id),validateBtnCar();"
                                 placeholder="Marca">
                             <div id="prueba"></div>
                         </div>
@@ -116,7 +120,7 @@
                     <div class="text-info">RUEDA 3</div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <input type="text" class="form-control form-control-lg mayusculas" id="brandW3" onblur=" validateTex(this.id),validateBtnCar();"
+                            <input type="text" class="form-control form-control-lg mayusculas brand" id="brandW3" onblur=" validateTextWheels(this.id),validateBtnCar();"
                                 placeholder="Marca">
                             <div id="prueba"></div>
                         </div>
@@ -131,7 +135,7 @@
                     <div class="text-info">RUEDA 4</div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <input type="text" class="form-control form-control-lg mayusculas" id="brandW4" onblur=" validateTex(this.id),validateBtnCar();"
+                            <input type="text" class="form-control form-control-lg mayusculas brand" id="brandW4" onblur=" validateTextWheels(this.id),validateBtnCar();"
                                 placeholder="Marca">
                             <div id="prueba"></div>
                         </div>
@@ -146,14 +150,11 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button"  id ="btnAddCar" class="btn btn-info " data-dismiss="modal" onclick="carWeels();" disabled="true" >GUARDAR COCHE</button> 
+                <button type="button"  id ="btnAddCar" class="btn btn-info " data-dismiss="modal" onclick="carWeels();" disabled="true">GUARDAR COCHE</button> 
             </div>
             </div>
         </div>
     </div>
-    
-
-    
     
 </body>
 <script src="../models/car.js"></script>
