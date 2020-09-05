@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rockets</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css"> 
+</head>
+<body>
+   <!-- animacion -->
+  <div id="cielo" class="cielo"></div>
+  <div class=" text-left" ><img id="aniRo0" class="movimiento mov d-none " src="img/rocket1-llamas.png" ></div>
+  <div class= "text-left" ><img id="aniRo1" class="movimiento mov d-none mt-5 pt-5"  src="img/rocket2-llamas.png"></div>
+  <div class="modal fade" id="addRocket" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content text-white bg-dark border-light">
+        <div class="modal-body">
+          Rocket added.
+          <button type="button" class="btn btn-outline-light float-right" data-dismiss="modal">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- form rocket -->
+  <div class="container-fluid ">
+    <div id="formCustoms" class="row">
+      <div class="col-md-12 min-vh-100 d-flex flex-column justify-content-center ">
+        <div class="row">
+          <div class="col-sm-10 col-md-6 col-lg-4 mx-auto ">
+            <div class="tlBrand text-warning mb-3  text-center tebrandlog"><img src="img/rocket-form.png" alt=""></div>
+            <div class="card rounded shadow shadow-sm colorform">
+              <div class="card-body  p-5">
+                <form class="form overflow-hidden" role="form" autocomplete="off"  id="formRocket" >
+                
+                  <div class="form-group ">
+                    <label for="">ID Rocket</label>
+                    <input type="text" class="form-control form-control-lg" id="idRocket" placeholder="Code Rocket">
+                    <div class="invalid-feedback">
+                      Rocket code must be 8 characters.
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Thrusters</label>
+                    <select class="custom-select custom-select-lg" id="numThRocket">
+                        <option selected disabled value="0">NUMBER THRUSTERS</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                      </select>
+                      <button type="button" class="btn  btn-outline-secondary btn-block  mt-3" onclick="addThs();" >ADD THRUSTERS</button>  
+                      
+                      <div class="invalid-feedback">
+                        You must add at least one thruster.
+                      </div>
+                  </div>  
+                    <div id="setThRocket" class="form-row"></div>
+                    <button type="button" class="btn btn-outline-success btn-block btn-lg  mt-3 " onclick="validate();">SAVE ROCKET</button>
+                </form>
+              </div>  
+              <div class="card-footer text-secondary text-center">
+                <p>Exercici Coets</p>
+              </div>
+            </div> 
+          </div>
+        </div>
+      </div>                 
+    </div>
+  </div>  
+  <!-- Info rocket -->
+  <div id="rocketDetails" class="container text-light fixed-bottom mb-5 d-none ">
+    <div class="row">
+      <div class="col-md-6 colorform">
+        <div class="row p-3">
+          <div class="col-md-4 pt-3 text-center">
+            <h5>ID</h5>
+            <h3 id="idrocket0"></h3> 
+          </div>
+          <div class="col-md-3 text-center">
+            <h5>TH</h5>
+            <h1 id="numTh0" class="colorform pb-2">0</h1>
+          </div>
+          <div class="col-md-3 text-center">
+            <h5>PW</h5>
+            <h1 id="pwR0" class="colorform pb-2 text-danger">0</h1>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-success btn-lg mb-1" id="up0" onclick="speedUpR(this.id);">▲</button><br>
+            <button class="btn btn-danger btn-lg " id="bk0" onclick=" breakR(this.id);">▼</button><br>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 colorform">
+        <div class="row p-3">
+          <div class="col-md-4 pt-3 text-center">
+            <h5>ID</h5>
+            <h3 id="idrocket1"></h3> 
+          </div>
+          <div class="col-md-3 text-center">
+            <h5>TH</h5>
+            <h1 id="numTh1"class="colorform pb-2">0</h1>
+          </div>
+          <div class="col-md-3 text-center">
+            <h5>PW</h5>
+            <h1 id="pwR1"class="colorform pb-2 text-danger">0</h1>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-success btn-lg mb-1" id="up1" onclick=" speedUpR(this.id);" >▲</button><br>
+            <button class="btn btn-danger btn-lg" id="bk1" onclick=" breakR(this.id);">▼</button><br>
+          </div>
+        </div>
+    </div>
+  </div>
+    
+</body>
+<script src="../models/rocket.js"></script>
+<script src="../models/thruster.js"></script>
+<script src="../controllers/controller.js"></script>
+ <!-- BOOTSTRAP JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</html>

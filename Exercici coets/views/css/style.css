@@ -1,0 +1,70 @@
+body{
+    height: 100%;
+    overflow: hidden;
+    
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.colorform{
+    background-color: rgb(255, 255, 255, 0.1);
+    border: solid 1px #6c757d;
+}
+.colorform label{
+    color: #ffffff;
+}
+.colorform input{
+    text-transform: uppercase;
+}
+
+.cielo{
+    background-image: url("../img/cielo3.gif");
+    position: absolute;    
+    height: 100%;
+    width: 100%;
+    
+}
+
+.movcielo{
+    animation-name: cielo;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+   
+.movimiento{
+    position: absolute;
+    top: 200px;
+    left: 30%;
+    
+    
+}
+.mov{
+    animation-name: mov;
+    animation-duration: 10s;
+    animation-iteration-count: inherit;  
+}
+.mov2{
+    animation-name: mov2;
+    animation-duration: 110s;
+    animation-iteration-count: initial;  
+}
+
+
+@keyframes mov {
+    0%   {left: -10%;}
+    100% {left: 30%;}
+  }
+
+  @keyframes mov2 {
+    0%   {left: 30%;}
+    100% {left: -3000%; }
+  }  
+
+
+@keyframes cielo{
+   from{ background-position: 0 0;}
+   from{ background-position: 100% 0;}
+}
