@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercici Ajax</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+
+        <button id="leer" type="button" class="btn btn-primary mt-5">leer</button>
+        <button id="leerArt" type="button" class="btn btn-danger mt-5">leer articulo</button>
+        <button id="leerArts" type="button" class="btn btn-secondary mt-5">leer articulos</button>
+        <button id="leerObje" type="button" class="btn btn-dark mt-5">leer objetos</button>
+        <div class="form-group mt-5">
+          <label for="">BUSCAR POR TITULO</label>
+          <input type="text" class="form-control"  id="titulo" >
+        </div>
+
+
+        <div id="datos" class="alert alert-primary mt-5"  role="alert">
+            
+            <ul id="datosArts">
+               
+            </ul>
+        </div>
+    </div>
+  
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="../controllers/leer.js"></script>
+
+</html>

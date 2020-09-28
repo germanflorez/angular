@@ -1,0 +1,47 @@
+{
+    "articulos":[
+        {
+            "titulo":"Cama Incomoda",
+            "descripcion":"Cama incomoda para dormir despierto",
+            "cantidad": 5
+    
+        },
+    
+        {
+            "titulo":"Sofa",
+            "descripcion":"Sofa incomodo",
+            "cantidad": 2
+    
+        },
+        {
+            "titulo":"silla",
+            "descripcion":"silla de escritorio",
+            "cantidad": 1
+    
+        },
+    
+        {
+            "titulo":"mesa comedor",
+            "descripcion":"mesa de comedor ",
+            "cantidad": 10
+    
+        }
+    ],
+
+    "categorias":[
+        {
+            "titulo":"categoria1",
+            "descripcion":"Descripcion ctegoria1"
+            
+    
+        },
+    
+        {
+            "titulo":"Categoria2",
+            "descripcion":"Descripcion Categoria2"
+               
+        }
+    ]   
+    
+}
+
